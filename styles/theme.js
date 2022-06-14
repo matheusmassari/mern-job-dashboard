@@ -6,7 +6,9 @@ const theme = extendTheme({
             html: {
                 scrollBehavior: "smooth",
             },
-            body: {},
+            body: {
+                background: "#E2E8F0",
+            },
             "*": {
                 boxSizing: "border-box",
             },
