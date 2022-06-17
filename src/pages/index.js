@@ -1,4 +1,4 @@
-import { Heading, Text, Box, Image, Button, VStack } from "@chakra-ui/react";
+import { Heading, Text, Box, Image, Button, chakra } from "@chakra-ui/react";
 
 // LANDING PAGE
 
@@ -27,7 +27,9 @@ export default function Home() {
                     mt="-3rem"
                 >
                     <Box>
-                        <Heading fontWeight={"700"}>Job Tracking App</Heading>
+                        <Heading fontWeight={"700"}>
+                            Job <chakra.span color="blue.500">Tracking</chakra.span> App
+                        </Heading>
                         <Text mt="2rem">
                             Lorem ipsum dolor sit amet consectetur adipisicing
                             elit. Ratione facilis quam, eos sapiente voluptatum

@@ -15,7 +15,7 @@ const theme = extendTheme({
         },
     },
     fonts: {
-        heading: `Poppins, sans-serif`,
+        heading: `Roboto Condensed, sans-serif`,
         body: `Poppins`,
     },
 });

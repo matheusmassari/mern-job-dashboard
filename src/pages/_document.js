@@ -12,22 +12,17 @@ export default function Document() {
                     rel="preconnect"
                     href="https://fonts.gstatic.com"
                     crossOrigin
-                />
-                {/* Allura Font */}
-                <link
-                    href="https://fonts.googleapis.com/css2?family=Allura&display=swap"
-                    rel="stylesheet"
-                />
+                />             
                 {/* Poppins Font */}
                 <link
                     href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
                     rel="stylesheet"
-                />
-                {/* Fascinated FONT */}
+                />               
+                {/* Roboto Condensed Font */}
                 <link
-                    href="https://fonts.googleapis.com/css2?family=Fascinate&display=swap"
+                    href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap"
                     rel="stylesheet"
-                ></link>
+                />
             </Head>
             <body>
                 <Main />
