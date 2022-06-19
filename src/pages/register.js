@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import {
     Box,
@@ -50,11 +50,11 @@ const RegisterPage = () => {
         handleSubmit,
         formState: { errors },
     } = useForm({
-        resolver: yupResolver(schema)
-    });
-    
+        resolver: yupResolver(schema),
+        mode: "onBlur",
+    });   
 
-    const submitUser = (data) => {        
+    const submitUser = (data) => {
         console.log(data);
     };
 
@@ -78,7 +78,7 @@ const RegisterPage = () => {
                         Register
                     </Heading>
                     <VStack spacing={10}>
-                        <FormControl isRequired>
+                        <FormControl isRequired isInvalid={errors.username}>
                             <FormLabel htmlFor="username">Username</FormLabel>
                             <Input
                                 id="username"
@@ -89,7 +89,7 @@ const RegisterPage = () => {
                                 {errors?.username?.message}
                             </FormErrorMessage>
                         </FormControl>
-                        <FormControl isRequired>
+                        <FormControl isRequired isInvalid={errors.email}>
                             <FormLabel htmlFor="email">Email</FormLabel>
                             <Input
                                 id="email"
@@ -100,7 +100,7 @@ const RegisterPage = () => {
                                 {errors?.email?.message}
                             </FormErrorMessage>
                         </FormControl>
-                        <FormControl isRequired>
+                        <FormControl isRequired isInvalid={errors.password}>
                             <FormLabel htmlFor="password">Password</FormLabel>
                             <Input
                                 type="password"
