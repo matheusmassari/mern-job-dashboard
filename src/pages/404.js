@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Image, Center, Text, VStack, Link } from "@chakra-ui/react";
 import NextLink from "next/link";
 
-const NotFound = () => {
+const NotFoundPage = () => {
     return (
         <Box>
             <Center mt="6rem">
@@ -22,7 +22,7 @@ const NotFound = () => {
                     </Text>
                     <NextLink href="landing" passHref>
                         <Link style={{textDecoration: "none"}}>
-                            <Text>Back Home</Text>
+                            <Text color="teal.500" as="u" >Back Home</Text>
                         </Link>
                     </NextLink>
                 </VStack>
@@ -31,4 +31,4 @@ const NotFound = () => {
     );
 };
 
-export default NotFound;
+export default NotFoundPage;

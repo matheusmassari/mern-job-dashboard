@@ -1,7 +1,7 @@
 import React from 'react'
 import { Heading, Text, Box, Image, Button, chakra } from "@chakra-ui/react";
 
-const Landing = () => {
+const LandingPage = () => {
   return (
       <>
           <Box as="nav">
@@ -54,4 +54,4 @@ const Landing = () => {
   );
 }
 
-export default Landing
+export default LandingPage
