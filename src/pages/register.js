@@ -7,17 +7,13 @@ import RegisterForm from "../components/forms/registerForm";
 
 const RegisterPage = () => {
     const [isMember, setIsMember] = useState(true);
-
     const toggleMember = () => setIsMember(!isMember);
 
-    const submitUser = (data) => {
-        console.log(data);
-    };
 
     return (
         <Grid minH="95vh" alignItems="center">
             {/* LOGIN EXISTING USER */}
-            {isMember && <LoginForm toggleMember={toggleMember} />}
+            {isMember && <LoginForm toggleMember={toggleMember}   />}
 
             {/* REGISTER NEW USER */}
             {!isMember && <RegisterForm toggleMember={toggleMember} />}

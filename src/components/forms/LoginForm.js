@@ -16,24 +16,28 @@ import {
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../../utils/loginSchema";
+import { useAppContext } from "../../context/appContext";
 
 const LoginForm = ({ toggleMember }) => {
+    const { isLoading, registerUser } = useAppContext();
+    console.log("renderizou");
 
-     const {
-         register,
-         handleSubmit,
-         formState: { errors },
-     } = useForm({
-         resolver: yupResolver(loginSchema),
-         mode: "onBlur",
-     });
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({
+        resolver: yupResolver(loginSchema),
+        mode: "onBlur",
+    });
 
-     const loginUser = (data) => {
-         console.log(data);
-     };
+    const loginUser = (data) => {
+        const { email, password } = data;
+        console.log(email, password);
+    };
 
     return (
-        <form>
+        <form onSubmit={handleSubmit(loginUser)}>
             <Container
                 borderTop="6px solid"
                 borderTopColor="blue.500"
@@ -78,7 +82,6 @@ const LoginForm = ({ toggleMember }) => {
                         colorScheme="blue"
                         w="100%"
                         type="submit"
-                        onClick={handleSubmit(loginUser)}
                         disabled={!!errors.email || !!errors.password}
                     >
                         Submit
