@@ -15,7 +15,7 @@ const AppContext = createContext();
 const AppProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    const registerUser = async (currentUser) => {
+    const registerUser = (currentUser) => {
         console.log(currentUser);
     };
 

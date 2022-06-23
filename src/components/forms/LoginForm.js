@@ -20,7 +20,6 @@ import { useAppContext } from "../../context/appContext";
 
 const LoginForm = ({ toggleMember }) => {
     const { isLoading, registerUser } = useAppContext();
-    console.log("renderizou");
 
     const {
         register,
@@ -31,13 +30,18 @@ const LoginForm = ({ toggleMember }) => {
         mode: "onBlur",
     });
 
-    const loginUser = (data) => {
+    const registrationSubmit = (data) => {
         const { email, password } = data;
-        console.log(email, password);
+        const currentUser = { email, password };
+        if (isMember) {
+            console.log("This username already exists.");
+        } else {
+            registerUser(currentUser);
+        }
     };
 
     return (
-        <form onSubmit={handleSubmit(loginUser)}>
+        <form onSubmit={handleSubmit(registrationSubmit)}>
             <Container
                 borderTop="6px solid"
                 borderTopColor="blue.500"
@@ -82,7 +86,9 @@ const LoginForm = ({ toggleMember }) => {
                         colorScheme="blue"
                         w="100%"
                         type="submit"
-                        disabled={!!errors.email || !!errors.password}
+                        disabled={
+                            !!errors.email || !!errors.password || isLoading
+                        }
                     >
                         Submit
                     </Button>

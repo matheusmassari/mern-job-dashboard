@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     Container,
     Center,
@@ -16,24 +16,33 @@ import {
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registerSchema } from "../../utils/registerSchema";
+import { useAppContext } from "../../context/appContext";
 
 const RegisterForm = ({ toggleMember }) => {
+    const { isLoading, registerUser } = useAppContext();
+    const [isMember, setIsMember] = useState(false);
 
-        const {
-            register,
-            handleSubmit,
-            formState: { errors },
-        } = useForm({
-            resolver: yupResolver(registerSchema),
-            mode: "onBlur",
-        });
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({
+        resolver: yupResolver(registerSchema),
+        mode: "onBlur",
+    });
 
-        const registerUser = (data) => {
-            console.log(data);
-        };
+    const registrationSubmit = (data) => {
+        const { username, password, email } = data;
+        const currentUser = { username, password, email };
+        if (isMember) {
+            console.log("This username already exists.");
+        } else {
+            registerUser(currentUser);
+        }
+    };
 
     return (
-        <form>
+        <form onSubmit={handleSubmit(registrationSubmit)}>
             <Container
                 borderTop="6px solid"
                 borderTopColor="blue.500"
@@ -89,11 +98,11 @@ const RegisterForm = ({ toggleMember }) => {
                         colorScheme="blue"
                         w="100%"
                         type="submit"
-                        onClick={handleSubmit(registerUser)}
                         disabled={
                             !!errors.email ||
                             !!errors.password ||
-                            !!errors.username
+                            !!errors.username ||
+                            isLoading
                         }
                     >
                         Submit
